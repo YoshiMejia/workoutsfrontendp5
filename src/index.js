@@ -7,10 +7,10 @@ import thunk from "redux-thunk";
 import workoutsReducer from './reducers/workoutsReducer'
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 
-
-const store = createStore(workoutsReducer, applyMiddleware(thunk))
+const store = createStore(workoutsReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 ReactDOM.render(
    <Provider store={store}>
