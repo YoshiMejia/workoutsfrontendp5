@@ -1,5 +1,6 @@
 import React from 'react'
 import WorkoutCard from '../components/WorkoutCard'
+import WorkoutForm from '../components/WorkoutForm'
 
 export default class WorkoutsContainer extends React.Component {
     state = {
@@ -16,7 +17,6 @@ export default class WorkoutsContainer extends React.Component {
         .then(res => res.json())
         .then(json => {
             // debugger
-            
            this.setState({
                workouts: json
            })
@@ -27,6 +27,7 @@ export default class WorkoutsContainer extends React.Component {
        return (
        <div id="workouts-container">
            {/* workoutform component will go here */}
+           <WorkoutForm />
             <h1>Workouts container being rendered</h1>
             {this.createWorkoutCard()}
         </div>
