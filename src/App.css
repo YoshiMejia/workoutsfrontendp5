@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.WorkoutCard {
+  border-style: solid;
+  border-top-style: dotted;
+  border-left-style: dotted;
+  margin: 25px;
+}
