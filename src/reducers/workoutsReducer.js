@@ -1,5 +1,5 @@
 const workoutsReducer = (state = { workouts: []}, action) => {
-    debugger
+    // debugger
     switch (action.type) {
       case "FETCH_WORKOUTS":
         return {
