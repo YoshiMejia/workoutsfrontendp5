@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { newWorkoutToStore } from '../actions/actions';
 
 class WorkoutForm extends Component {
     constructor(props) {
@@ -37,7 +38,7 @@ class WorkoutForm extends Component {
         .then(res => res.json())
         .then(json => {
            this.props.addWorkout(json)
-           this.props.addWorkoutToStore(json)
+           this.props.newWorkoutToStore(json)
         })
         this.setState({
             name: "",
@@ -91,11 +92,11 @@ class WorkoutForm extends Component {
     }
 }
 
-const mapDispatch = (dispatch) => {
-    return {
-        addWorkoutToStore: (formData) => dispatch({ type: "ADD_WORKOUT", payload: formData }),
-      };
+// const mapDispatch = (dispatch) => {
+//     return {
+//         addWorkoutToStore: (formData) => dispatch({ type: "ADD_WORKOUT", workout: formData }),
+//       };
     
-}
+// }
 
-export default connect(null, mapDispatch)(WorkoutForm)
+export default connect(null, {newWorkoutToStore})(WorkoutForm)

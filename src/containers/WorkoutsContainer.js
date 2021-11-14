@@ -1,7 +1,8 @@
 import React from 'react'
 import WorkoutCard from '../components/WorkoutCard'
-// import { connect } from 'react-redux'
+import { connect } from 'react-redux'
 import FormContainer from './FormContainer'
+import { fetchWorkouts } from '../actions/actions'
 
 class WorkoutsContainer extends React.Component {
     state = {
@@ -30,6 +31,7 @@ class WorkoutsContainer extends React.Component {
            this.setState({
                workouts: json
            })
+           this.props.fetchWorkouts(json)
         })
       }
 
@@ -45,10 +47,10 @@ class WorkoutsContainer extends React.Component {
     }
 }
 
-export default WorkoutsContainer
+// export default WorkoutsContainer
 // const mapState = state => {
 //     return { workouts: state.workouts}
 // }
 
-// export default connect(mapState)(WorkoutsContainer)
+export default connect(null, {fetchWorkouts})(WorkoutsContainer)
 

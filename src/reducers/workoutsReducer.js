@@ -1,15 +1,16 @@
 const workoutsReducer = (state = { workouts: []}, action) => {
-    // debugger
-    console.log('inside reducer');
     switch (action.type) {
-      case "ADD_WORKOUT":
-        console.log({ workouts: [...state.workouts, action.payload] })
+      case "NEW_WORKOUT":
+        console.log("new workout action", { workouts: [...state.workouts.concat(action.workout)] })
         return {
-        //   ...state,
-        //   workouts: action.workouts,
-        // }, () => console.log(state)
-          workouts: [...state.workouts, action.payload]
+          workouts: [...state.workouts.concat(action.workout)]
         }
+        case "FETCH_WORKOUTS":
+          const workouts = action.workout.map((workout) => workout)
+          console.log("fetch workouts action", ...state.workouts.concat(workouts))
+          return{
+            workouts: [...state.workouts.concat(workouts)]
+          }
       default:
         return state;
     }
