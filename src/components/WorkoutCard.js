@@ -3,10 +3,10 @@ function WorkoutCard({workout}){
     return(
         <div className="WorkoutCard">
             <div id={workout.id} key={workout.id}>
-                <h2>{workout.name}</h2>
-                <h4>{workout.description}</h4>
-                <p>{workout.reps}</p>
-                <p>{workout.sets}</p>
+                <h2>Name: {workout.name}</h2>
+                <h4>Description: {workout.description}</h4>
+                <p>Reps: {workout.reps}</p>
+                <p>Sets: {workout.sets}</p>
                 <button>Completed workout</button>
             </div>
         </div>
