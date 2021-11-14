@@ -1,14 +1,24 @@
 import React from 'react'
 import WorkoutCard from '../components/WorkoutCard'
-import WorkoutForm from '../components/WorkoutForm'
+// import { connect } from 'react-redux'
+import FormContainer from './FormContainer'
 
-export default class WorkoutsContainer extends React.Component {
+class WorkoutsContainer extends React.Component {
     state = {
         workouts: []
     }
 
     createWorkoutCard(){
         return this.state.workouts.map((workout) => <WorkoutCard workout={workout} /> )
+    }
+
+    addWorkout = (newWorkout) => {
+        this.setState((prevState) => {
+            return {
+                workouts: [...prevState.workouts, newWorkout]
+            } 
+        })
+        this.createWorkoutCard()
     }
 
     componentDidMount(){
@@ -26,11 +36,19 @@ export default class WorkoutsContainer extends React.Component {
     render(){
        return (
        <div id="workouts-container">
-           {/* workoutform component will go here */}
-           <WorkoutForm />
+           {/* rendering form container, MAYBE change to have a button which onClick will mount the form container & form? */}
+           < FormContainer addWorkout={this.addWorkout} />
             <h1>Workouts container being rendered</h1>
             {this.createWorkoutCard()}
         </div>
         )
     }
 }
+
+export default WorkoutsContainer
+// const mapState = state => {
+//     return { workouts: state.workouts}
+// }
+
+// export default connect(mapState)(WorkoutsContainer)
+
