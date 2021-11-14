@@ -1,14 +1,14 @@
 // import logo from './logo.svg';
 import React from 'react';
 import './App.css';
-import WorkoutsContainer from './containers/WorkoutsContainer';
-import PlannersContainer from './containers/PlannersContainer';
-import {
-  BrowserRouter, Routes,
-  Route
-} from 'react-router-dom';
+// import WorkoutsContainer from './containers/WorkoutsContainer';
+// import PlannersContainer from './containers/PlannersContainer';
+// import {
+//   BrowserRouter, Routes,
+//   Route
+// } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import { Home } from './components/Home';
+// import { Home } from './components/Home';
 
 export default class App extends React.Component {
 
