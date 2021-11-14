@@ -6,7 +6,8 @@ import { fetchWorkouts } from '../actions/actions'
 
 class WorkoutsContainer extends React.Component {
     state = {
-        workouts: []
+        workouts: [],
+        showForm: false
     }
 
     createWorkoutCard(){
@@ -35,11 +36,25 @@ class WorkoutsContainer extends React.Component {
         })
       }
 
+      hideForm = () => {
+        this.setState({
+            ...this.state.workouts,
+            showForm: !this.state.showForm
+        })
+      }
+
+      buttonValue() {
+          if(!this.state.showForm){
+              return "Add new workout"
+          } else 
+          { return "Hide form"}
+      }
+
     render(){
        return (
        <div id="workouts-container">
-           {/* rendering form container, MAYBE change to have a button which onClick will mount the form container & form? */}
-           < FormContainer addWorkout={this.addWorkout} />
+           <button onClick={this.hideForm}>{this.buttonValue()} </button>
+          { this.state.showForm && < FormContainer addWorkout={this.addWorkout} />}
             <h1>Workouts container being rendered</h1>
             {this.createWorkoutCard()}
         </div>
