@@ -3,8 +3,9 @@ import { Home } from './Home';
 import WorkoutsContainer from '../containers/WorkoutsContainer';
 import PlannersContainer from '../containers/PlannersContainer';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import GraveyardContainer from '../containers/GraveyardContainer';
 
-const Navbar = (props) => {
+const Navbar = () => {
   return (
     <div className="navbar">
         <BrowserRouter>
@@ -15,13 +16,16 @@ const Navbar = (props) => {
                 <Link to="/planners">Planners</Link>
             <br />
                 <Link to="/workouts">Workouts</Link>
+            <br />
+                <Link to="/graveyard">Completed Workouts</Link>
             </nav>
             </div>
         <div className ="routes">
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="planners" element={<PlannersContainer store={props.store}/>} />
-                <Route path="workouts" element={<WorkoutsContainer store={props.store}/>} />
+                <Route path="planners" element={<PlannersContainer />} />
+                <Route path="workouts" element={<WorkoutsContainer />} />
+                <Route path="graveyard" element={<GraveyardContainer />} />
             </Routes>
         </div>
         </BrowserRouter>
