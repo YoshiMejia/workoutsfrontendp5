@@ -5,16 +5,16 @@ class PlannerCard extends React.Component{
     
     render(){ 
         const workouts = (
-            this.props.workouts.map((workout) =>  
-            <p>{workout.name}</p> )
+            this.props.planner.workouts.map((workout) =>  
+            workout.name )
         )
-
+        const listWorkouts = workouts.map((w, index) => <li key={index}>{w}</li>)
         return (
         <div className="plannerCard">
        <div id={this.props.planner.id} key={this.props.planner.id}>
             {console.log("inside planner card", workouts)}
-                 <h2>Name: {this.props.planner.name}</h2>
-                 <h4>Workouts: {workouts}</h4>
+                 <h2>Planner name: {this.props.planner.name}</h2>
+                 <ul>Workouts in this planner: {listWorkouts}</ul>
             </div>
          </div>
     )}
