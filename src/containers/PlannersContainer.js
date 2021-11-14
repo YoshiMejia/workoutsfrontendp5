@@ -41,7 +41,6 @@ export default class PlannersContainer extends React.Component {
       render(){
           return(
               <div id="planners-container">
-                  <h1>Planners container being rendered</h1>
                   {this.createPlannerCard()}
               </div>
           )
