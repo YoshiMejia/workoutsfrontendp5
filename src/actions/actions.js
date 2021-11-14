@@ -10,3 +10,9 @@ export const fetchWorkouts = (workouts) => {
     workout: workouts
   };
 };
+export const completeWorkout = (workout) => {
+  return { 
+    type: 'COMPLETE',
+    workout: workout
+  };
+};
