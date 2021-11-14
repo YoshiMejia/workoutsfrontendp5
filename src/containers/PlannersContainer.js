@@ -9,7 +9,8 @@ export default class PlannersContainer extends React.Component {
     }
 
     createPlannerCard(){
-        return this.state.planners.map((planner) => <PlannerCard planner={planner} workouts={this.state.workouts.map((workout) => <li key={workout.id}>{workout.name}</li>)} />)
+        // return this.state.planners.map((planner) => <PlannerCard planner={planner} workouts={this.state.workouts.map((workout) => <li key={workout.id}>{workout.name}</li>)} />)
+        return this.state.planners.map((planner) => <PlannerCard planner={planner} />)
     }
 
     addToPlanner = (newWorkout) => {
