@@ -3,8 +3,6 @@ import { connect } from 'react-redux'
 
 
 class GraveyardContainer extends React.Component {
-
-
     showCompleted = () => {
         if(this.props.completed){
             return this.props.completed.map((w) => w.workout.name)
@@ -14,13 +12,11 @@ class GraveyardContainer extends React.Component {
     }
 
     render(){ 
-
-        debugger
-        
+        // debugger        
         return(
             <div className="graveyard">
                 <h1>
-                    Rendering Graveyard
+                    You have completed the following workouts:
                 </h1>
                     <p>{this.showCompleted()}</p>
             </div>
