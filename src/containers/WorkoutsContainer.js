@@ -55,7 +55,7 @@ class WorkoutsContainer extends React.Component {
        <div id="workouts-container">
            <button onClick={this.hideForm}>{this.buttonValue()} </button>
           { this.state.showForm && < FormContainer addWorkout={this.addWorkout} />}
-            <h1>Workouts container being rendered</h1>
+            <h1>All workouts:</h1>
             {this.createWorkoutCard()}
         </div>
         )
