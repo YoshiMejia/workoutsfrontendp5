@@ -1,13 +1,13 @@
 import React from 'react'
 import WorkoutCard from '../components/WorkoutCard'
-import { connect } from 'react-redux'
 import FormContainer from './FormContainer'
-import { fetchWorkouts } from '../actions/actions'
+import Stopwatch from '../components/Stopwatch'
 
 class WorkoutsContainer extends React.Component {
     state = {
         workouts: [],
-        showForm: false
+        showForm: false,
+        showTimer: false
     }
 
     createWorkoutCard(){
@@ -22,24 +22,25 @@ class WorkoutsContainer extends React.Component {
         })
         this.createWorkoutCard()
     }
-
+      
+    
     componentDidMount(){
         const url ="http://127.0.0.1:3000/workouts"
         fetch(url)
         .then(res => res.json())
         .then(json => {
-            // debugger
-           this.setState({
-               workouts: json
-           })
-           this.props.fetchWorkouts(json)
+            if(!this.state.workouts.includes(json))
+            {this.setState({
+                workouts: json
+            })}
         })
       }
 
       hideForm = () => {
         this.setState({
             ...this.state.workouts,
-            showForm: !this.state.showForm
+            showForm: !this.state.showForm,
+            ...this.state.showTimer
         })
       }
 
@@ -50,10 +51,29 @@ class WorkoutsContainer extends React.Component {
           { return "Hide form"}
       }
 
+      showTimer = () =>{
+        this.setState({
+            ...this.state.workouts,
+            ...this.state.showForm,
+            showTimer: !this.state.showTimer
+
+        })
+      }
+
+      timerButtonValue() {
+        if(!this.state.showTimer){
+            return "Stopwatch"
+        } else 
+        { return "Hide stopwatch"}
+    }
+      
     render(){
        return (
        <div id="workouts-container">
-           <button onClick={this.hideForm}>{this.buttonValue()} </button>
+           <button className="button" onClick={this.showTimer}>{this.timerButtonValue()}</button>
+        {this.state.showTimer && <Stopwatch/> }
+
+           <button className="button" onClick={this.hideForm}>{this.buttonValue()} </button>
           { this.state.showForm && < FormContainer addWorkout={this.addWorkout} />}
             <h1>All workouts:</h1>
             {this.createWorkoutCard()}
@@ -62,10 +82,4 @@ class WorkoutsContainer extends React.Component {
     }
 }
 
-// export default WorkoutsContainer
-// const mapState = state => {
-//     return { workouts: state.workouts}
-// }
-
-export default connect(null, {fetchWorkouts})(WorkoutsContainer)
-
+export default WorkoutsContainer
