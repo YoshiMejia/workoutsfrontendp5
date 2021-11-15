@@ -84,7 +84,7 @@ class WorkoutForm extends Component {
                             name="reps"
                         />
                 <br />
-					<input type="submit" value="Create Workout" />
+					<input type="submit" value="Create Workout" className="button"/>
 				</form>
             </div>
         )
