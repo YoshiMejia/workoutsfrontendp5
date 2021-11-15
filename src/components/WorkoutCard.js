@@ -27,13 +27,12 @@ class WorkoutCard extends React.Component{
                 <h4>Description: {workout.description}</h4>
                 <p>Reps: {workout.reps}</p>
                 <p>Sets: {workout.sets}</p>
-                <button onClick={() => this.showForm()} >Complete workout</button>
+                <button className="button" onClick={() => this.showForm()} >Complete workout</button>
             </div>
         </div>}
             </>
         )
     }
 }
-//check if complete button works 
 
 export default connect(null, {completeWorkout})(WorkoutCard)
