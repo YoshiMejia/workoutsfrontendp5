@@ -21,7 +21,6 @@ class PlannerCard extends React.Component{
 }
 
 const mapState = state => {
-    // debugger
     return { workouts: state.workouts}
 }
 
