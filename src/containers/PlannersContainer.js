@@ -22,7 +22,7 @@ export default class PlannersContainer extends React.Component {
         })
         this.createPlannerCard()
     }
-    //add to planner function which sets state and rerenders list?
+//switch this component & workout component to fetch using actions
     componentDidMount(){
         const url ="http://127.0.0.1:3000/planners"
         fetch(url)
