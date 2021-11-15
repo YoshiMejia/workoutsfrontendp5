@@ -14,10 +14,9 @@ const workoutsReducer = (state = { workouts: []}, action) => {
             workouts: [...state.workouts.filter((workout) => workout.id === action.id)]
           }
           case "COMPLETE":
-            console.log("completing action",{workouts: [...state.workouts], completed: [action.workout]})
+            console.log("checking new action",{ workouts: [...state.workouts.concat(action.workout)] })
             return{
-              workouts: [...state.workouts], 
-              completed: [action]
+              workouts: [...state.workouts.concat(action.workout)]
             }
       default:
         return state;
