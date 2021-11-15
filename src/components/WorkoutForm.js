@@ -9,8 +9,7 @@ class WorkoutForm extends Component {
         name: "",
         description: "",
         sets: '',
-        reps: '',
-        completed: 0
+        reps: ''
     }}
 
     handleChange = (e) => {
@@ -91,12 +90,5 @@ class WorkoutForm extends Component {
         )
     }
 }
-
-// const mapDispatch = (dispatch) => {
-//     return {
-//         addWorkoutToStore: (formData) => dispatch({ type: "ADD_WORKOUT", workout: formData }),
-//       };
-    
-// }
 
 export default connect(null, {newWorkoutToStore})(WorkoutForm)
