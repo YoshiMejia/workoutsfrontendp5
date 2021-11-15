@@ -4,8 +4,12 @@ import { connect } from 'react-redux'
 
 class GraveyardContainer extends React.Component {
     showCompleted = () => {
-        if(this.props.completed){
-            return this.props.completed.map((w) => w.workout.name)
+        // debugger
+        if(this.props.workouts.length !== 0){
+            const workouts = this.props.workouts.map((w) => w.name)
+            const listWorkouts = workouts.map((w, index) => <li key={index}>{w}</li>)
+            // debugger
+            return listWorkouts
         } else {
             return "Completed workouts will go here"
         }
@@ -18,14 +22,14 @@ class GraveyardContainer extends React.Component {
                 <h1>
                     You have completed the following workouts:
                 </h1>
-                    <p>{this.showCompleted()}</p>
+                    <ul>{this.showCompleted()}</ul>
             </div>
         )
     }
 }
 
 const mapState = state => {
-    return { completed: state.completed}
+    return { workouts: state.workouts}
 }
 
 export default connect(mapState)(GraveyardContainer)
