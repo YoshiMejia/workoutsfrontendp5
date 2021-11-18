@@ -2,16 +2,19 @@ import React from 'react'
 import WorkoutCard from '../components/WorkoutCard'
 import FormContainer from './FormContainer'
 import Stopwatch from '../components/Stopwatch'
+import { fetchWorkouts } from '../actions/actions'
+import { connect } from 'react-redux'
+
 
 class WorkoutsContainer extends React.Component {
     state = {
-        workouts: [],
+        // workouts: [],
         showForm: false,
         showTimer: false
     }
 
     createWorkoutCard(){
-        return this.state.workouts.map((workout) => <WorkoutCard workout={workout} /> )
+        return this.props.workouts.map((workout) => <WorkoutCard workout={workout} /> )
     }
 
     addWorkout = (newWorkout) => {
@@ -25,20 +28,22 @@ class WorkoutsContainer extends React.Component {
       
     
     componentDidMount(){
-        const url ="http://127.0.0.1:3000/workouts"
-        fetch(url)
-        .then(res => res.json())
-        .then(json => {
-            if(!this.state.workouts.includes(json))
-            {this.setState({
-                workouts: json
-            })}
-        })
+        this.props.fetchWorkouts()
+        // const url ="http://127.0.0.1:3000/workouts"
+        // fetch(url)
+        // .then(res => res.json())
+        // .then(json => {
+            // if(!this.props.workouts.includes(json))
+            // this.setState({
+            //     workouts: json
+            // })
+
+        // })
       }
 
       hideForm = () => {
         this.setState({
-            ...this.state.workouts,
+            ...this.props.workouts,
             showForm: !this.state.showForm,
             ...this.state.showTimer
         })
@@ -53,7 +58,7 @@ class WorkoutsContainer extends React.Component {
 
       showTimer = () =>{
         this.setState({
-            ...this.state.workouts,
+            ...this.props.workouts,
             ...this.state.showForm,
             showTimer: !this.state.showTimer
 
@@ -82,4 +87,13 @@ class WorkoutsContainer extends React.Component {
     }
 }
 
-export default WorkoutsContainer
+const mapDispatch = dispatch => {
+    return {fetchWorkouts: () => dispatch(fetchWorkouts())}
+}
+
+const mapState = state => {
+    return {workouts: state.workouts}
+}
+
+export default connect(mapState, mapDispatch)(WorkoutsContainer)
+// export default WorkoutsContainer
