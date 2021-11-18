@@ -8,7 +8,6 @@ import { connect } from 'react-redux'
 
 class WorkoutsContainer extends React.Component {
     state = {
-        // workouts: [],
         showForm: false,
         showTimer: false
     }
@@ -29,16 +28,6 @@ class WorkoutsContainer extends React.Component {
     
     componentDidMount(){
         this.props.fetchWorkouts()
-        // const url ="http://127.0.0.1:3000/workouts"
-        // fetch(url)
-        // .then(res => res.json())
-        // .then(json => {
-            // if(!this.props.workouts.includes(json))
-            // this.setState({
-            //     workouts: json
-            // })
-
-        // })
       }
 
       hideForm = () => {
@@ -96,4 +85,3 @@ const mapState = state => {
 }
 
 export default connect(mapState, mapDispatch)(WorkoutsContainer)
-// export default WorkoutsContainer
