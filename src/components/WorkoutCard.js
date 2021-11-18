@@ -9,7 +9,7 @@ class WorkoutCard extends React.Component{
         uncompleted: true
     }
 
-    showForm = () => {
+    showCard = () => {
         this.setState({
             uncompleted: !this.state.uncompleted
         })
@@ -19,6 +19,7 @@ class WorkoutCard extends React.Component{
     render(){
         const workout = this.props.workout
         const uncompleted = this.state.uncompleted
+        // debugger
         return(
             <>
         { uncompleted && <div className="WorkoutCard">
@@ -27,7 +28,7 @@ class WorkoutCard extends React.Component{
                 <h4>Description: {workout.description}</h4>
                 <p>Reps: {workout.reps}</p>
                 <p>Sets: {workout.sets}</p>
-                <button className="button" onClick={() => this.showForm()} >Complete workout</button>
+                <button className="button" onClick={() => this.showCard()} >Complete workout</button>
             </div>
         </div>}
             </>
@@ -35,4 +36,8 @@ class WorkoutCard extends React.Component{
     }
 }
 
-export default connect(null, {completeWorkout})(WorkoutCard)
+const mapState = state => {
+    return {workouts: state.workouts, completed: state.completed}
+}
+
+export default connect(mapState, {completeWorkout})(WorkoutCard)
