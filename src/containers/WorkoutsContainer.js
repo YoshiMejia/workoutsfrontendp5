@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 
 class WorkoutsContainer extends React.Component {
     state = {
+        workouts: [],
         showForm: false,
         showTimer: false
     }
@@ -28,15 +29,15 @@ class WorkoutsContainer extends React.Component {
     
     componentDidMount(){
         this.props.fetchWorkouts()
-      }
+    }
 
-      hideForm = () => {
+    hideForm = () => {
         this.setState({
             ...this.props.workouts,
             showForm: !this.state.showForm,
             ...this.state.showTimer
         })
-      }
+    }
 
       buttonValue() {
           if(!this.state.showForm){
