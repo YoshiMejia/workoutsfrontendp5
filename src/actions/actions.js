@@ -11,9 +11,6 @@ export const fetchWorkouts = () => {
     .then(json => dispatch({type: 'FETCH_WORKOUTS', workout: json}))
   }
 };
-
-
-
 export const completeWorkout = (workout) => {
   return { 
     type: 'COMPLETE',
