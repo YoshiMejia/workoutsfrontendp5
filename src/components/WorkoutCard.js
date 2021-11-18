@@ -18,6 +18,7 @@ class WorkoutCard extends React.Component{
     render(){
         const workout = this.props.workout
         const uncompleted = this.state.uncompleted
+        //completing a workout sets the first 'workout' 's uncompleted state to false???
         return(
             <>
         { uncompleted && <div className="WorkoutCard">
