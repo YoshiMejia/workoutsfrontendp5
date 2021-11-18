@@ -8,8 +8,10 @@ const workoutsReducer = (state = { workouts: [], completed: [] }, action) => {
           completed: [...state.completed]
         }
       case "COMPLETE":
+        const idx = state.workouts.indexOf(action.workout)
+        state.workouts.splice(idx, 1)
         console.log("checking new action",{ workouts: [...state.workouts], 
-          completed: [...state.completed.concat(action.workout)]})
+          completed: [...state.completed.concat(action.workout)]}, state.workouts, state.completed)
         return{
           workouts: [...state.workouts], 
           completed: [...state.completed.concat(action.workout)]
