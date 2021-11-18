@@ -4,7 +4,6 @@ import React from 'react'
 
 
 class WorkoutCard extends React.Component{
-    
     state = {
         uncompleted: true
     }
@@ -19,7 +18,6 @@ class WorkoutCard extends React.Component{
     render(){
         const workout = this.props.workout
         const uncompleted = this.state.uncompleted
-        // debugger
         return(
             <>
         { uncompleted && <div className="WorkoutCard">
