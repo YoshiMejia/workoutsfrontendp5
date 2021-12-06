@@ -19,7 +19,9 @@ class WorkoutForm extends Component {
             [name]: value
         }, () => console.log(this.state))
     }
+
     
+     
     handleSubmit = (e) => {
         e.preventDefault();
         //hardcoded planner
