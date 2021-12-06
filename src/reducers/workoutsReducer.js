@@ -10,8 +10,10 @@ const workoutsReducer = (state = { workouts: [], completed: [] }, action) => {
       case "COMPLETE":
         const idx = state.workouts.indexOf(action.workout)
         state.workouts.splice(idx, 1)
+        //this is directly mutating state, i need to find another way to accomplish this without splice
         console.log("checking new action",{ workouts: [...state.workouts], 
-          completed: [...state.completed.concat(action.workout)]}, state.workouts, state.completed)
+          completed: [...state.completed.concat(action.workout)]}, 
+          state.workouts, state.completed)
         return{
           workouts: [...state.workouts], 
           completed: [...state.completed.concat(action.workout)]
