@@ -8,6 +8,8 @@ import workoutsReducer from './reducers/workoutsReducer'
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from 'redux-devtools-extension';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 const store = createStore(workoutsReducer, composeWithDevTools(applyMiddleware(thunk)))
