@@ -14,7 +14,6 @@ const store = createStore(workoutsReducer, composeWithDevTools(applyMiddleware(t
 
 ReactDOM.render(
    <Provider store={store}>
-     
     <App />
   </Provider>,
   document.getElementById('root')
