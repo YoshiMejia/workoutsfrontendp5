@@ -4,6 +4,7 @@ import FormContainer from './FormContainer'
 import Stopwatch from '../components/Stopwatch'
 import { fetchWorkouts } from '../actions/actions'
 import { connect } from 'react-redux'
+// import Row from 'react-bootstrap/Row'
 
 
 class WorkoutsContainer extends React.Component {
@@ -13,8 +14,23 @@ class WorkoutsContainer extends React.Component {
         showTimer: false
     }
 
+    // OLD CODE
+    // createWorkoutCard(){
+    //     return this.props.workouts.map((workout) => <WorkoutCard workout={workout} /> )
+    // }
+
     createWorkoutCard(){
-        return this.props.workouts.map((workout) => <WorkoutCard workout={workout} /> )
+        const workoutCard = this.props.workouts.map((workout) =>
+            // <Row xs='auto' md='auto' >
+            //     <WorkoutCard workout={workout} />
+            // </Row>
+            <div className='container'>
+                <div className='row'>
+                    <WorkoutCard workout={workout} />
+                </div>
+            </div>
+        )
+        return workoutCard
     }
 
     addWorkout = (newWorkout) => {
@@ -70,6 +86,8 @@ class WorkoutsContainer extends React.Component {
 
            <button className="button" onClick={this.hideForm}>{this.buttonValue()} </button>
           { this.state.showForm && < FormContainer addWorkout={this.addWorkout} />}
+          <br />
+          <br />
             <h1>All workouts:</h1>
             {this.createWorkoutCard()}
         </div>
