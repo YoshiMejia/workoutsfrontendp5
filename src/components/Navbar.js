@@ -9,6 +9,7 @@ import { Button } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import { LinkContainer } from 'react-router-bootstrap';
+import Banner from './Banner';
 
 
 const Navbar = () => {
@@ -18,6 +19,7 @@ const Navbar = () => {
                 <Container className='p-3'>
                     <Container className='p-5 mb-4 bg-light rounded-3'>
                         {/* Routes == Switch */}
+                        <Banner />
                         <Routes>
                             <Route path='/' element={<Home/>} />
                             <Route path='/planners' element={<PlannersContainer/>} />
