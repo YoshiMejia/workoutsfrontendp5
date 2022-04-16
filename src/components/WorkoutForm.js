@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { newWorkoutToStore } from '../actions/actions';
+import { Button } from 'react-bootstrap';
 
 class WorkoutForm extends Component {
     constructor(props) {
@@ -51,42 +52,54 @@ class WorkoutForm extends Component {
 
     render(){
         return(
-            <div className="form-container">
+            <div className="form-row">
                 <form onSubmit={this.handleSubmit}>
+                <br />
                     <h4>New Workout </h4>
+                    <div class="col-md-4 mb-3">
                         <label>Name:</label>
                         <input
                             type="text"
                             onChange={(e)=>this.handleChange(e)}
                             value={this.state.name}
                             name="name"
+                            class="form-control"
                         />
-                <br />
+                    </div>
+                    <div class="col-md-4 mb-3">
                         <label>Description:</label>
                         <input
                             type="text"
                             onChange={(e)=>this.handleChange(e)}
                             value={this.state.description}
                             name="description"
+                            class="form-control"
                         />
-                <br />
+                    </div>
+                {/* <br /> */}
+                    <div class="col-md-4 mb-3">
                         <label>Sets:</label>
                         <input
                             type="number"
                             onChange={(e)=>this.handleChange(e)}
                             value={this.state.sets}
                             name="sets"
+                            class="form-control"
                         />
-                <br />
+                    </div>
+                {/* <br /> */}
+                    <div class="col-md-4 mb-3">
                         <label>Reps:</label>
                         <input
                             type="number"
                             onChange={(e)=>this.handleChange(e)}
                             value={this.state.reps}
                             name="reps"
+                            class="form-control"
                         />
+                    </div>
                 <br />
-					<input type="submit" value="Create Workout" className="button"/>
+					<Button type="submit" className="button"> Create Workout</Button>
 				</form>
             </div>
         )
