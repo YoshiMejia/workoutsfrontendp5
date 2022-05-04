@@ -8,29 +8,19 @@ import { connect } from 'react-redux'
 
 
 class WorkoutsContainer extends React.Component {
+        // OLD CODE
     state = {
         workouts: [],
         showForm: false,
         showTimer: false
     }
-
-    // OLD CODE
-    // createWorkoutCard(){
-    //     return this.props.workouts.map((workout) => <WorkoutCard workout={workout} /> )
-    // }
-
+  
     createWorkoutCard(){
-        const workoutCard = this.props.workouts.map((workout) =>
-            // <Row xs='auto' md='auto' >
-            //     <WorkoutCard workout={workout} />
-            // </Row>
-            <div className='container'>
-                <div className='row'>
-                    <WorkoutCard workout={workout} />
-                </div>
-            </div>
-        )
-        return workoutCard
+        // if completed includes workout 
+        const completed = this.props.completed.map((w) => w.name)
+        const noCompletes = this.props.workouts.filter((w) => w.name !== completed)
+        debugger
+        return noCompletes.map((workout) => <WorkoutCard workout={workout} /> )
     }
 
     addWorkout = (newWorkout) => {
@@ -44,7 +34,12 @@ class WorkoutsContainer extends React.Component {
       
     
     componentDidMount(){
-        this.props.fetchWorkouts()
+        // debugger
+        if (this.state.workouts.length === 0){
+            this.props.fetchWorkouts()
+        } else if (this.state.workouts.length > 1) {
+            console.log('test');
+        }
     }
 
     hideForm = () => {
@@ -79,19 +74,24 @@ class WorkoutsContainer extends React.Component {
     }
       
     render(){
-       return (
-       <div id="workouts-container">
-           <button className="button" onClick={this.showTimer}>{this.timerButtonValue()}</button>
-        {this.state.showTimer && <Stopwatch/> }
+        return (
+            <>
+        <div id="container">
+            <button className="button" onClick={this.showTimer}>{this.timerButtonValue()}</button>
+            {this.state.showTimer && <Stopwatch/> }
 
-           <button className="button" onClick={this.hideForm}>{this.buttonValue()} </button>
-          { this.state.showForm && < FormContainer addWorkout={this.addWorkout} />}
-          <br />
-          <br />
-            <h1>All workouts:</h1>
-            {this.createWorkoutCard()}
-        </div>
-        )
+            <button className="button" onClick={this.hideForm}>{this.buttonValue()} </button>
+            { this.state.showForm && < FormContainer addWorkout={this.addWorkout} />}
+            <br />
+            <br />
+                <h1>All workouts:</h1>
+                <div className="row row-cols-3">
+                    {this.createWorkoutCard()}
+                </div>
+                
+            </div>
+        </>
+            )
     }
 }
 
@@ -100,7 +100,7 @@ const mapDispatch = dispatch => {
 }
 
 const mapState = state => {
-    return {workouts: state.workouts}
+    return {workouts: state.workouts, completed: state.completed}
 }
 
 export default connect(mapState, mapDispatch)(WorkoutsContainer)
